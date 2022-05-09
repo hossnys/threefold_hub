@@ -12,15 +12,16 @@ jobs:
         runs-on: ubuntu-latest
         steps:
         - uses: actions/checkout@v2
-        - uses: docker/build-push-action@v1
+        - uses: docker/build-push-action@v2
           with:
-            path: docker/validator
+            context: docker/validator
             repository: ${{ secrets.DOCKERHUB_USERNAME }}/tf-hub
             username: ${{ secrets.DOCKERHUB_USERNAME }}
             password: ${{ secrets.DOCKERHUB_PASSWORD }}
-            dockerfile: docker/validator/Dockerfile
+            #dockerfile: docker/validator/Dockerfile
             tags: latest
-            build_args: BRANCH=development
+            push: true
+            #build_args: BRANCH=development
         - name: Convert Docker image to flist
           run: |
             curl -f -X POST  -H "Authorization: bearer ${{secrets.ZEROHUB_TOKEN}}" ${{ secrets.ZEROHUB_URL }}/api/flist/me/docker -F 'image=${{ secrets.DOCKERHUB_USERNAME }}/tf-hub:latest'                                                                                                                                                                       
