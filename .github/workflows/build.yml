@@ -17,8 +17,8 @@ jobs:
             username: ${{ secrets.DOCKERHUB_USERNAME }}
             password: ${{ secrets.DOCKERHUB_PASSWORD }}
             dockerfile: docker/validator/Dockerfile
-            tags: ${ github.event.release.name }
-            build_args: BRANCH=development,TRC=false
+            tags: latest
+            build_args: BRANCH=development
         - name: Convert Docker image to flist
           run: |
-            curl -f -X POST  -H "Authorization: bearer ${{secrets.ZEROHUB_TOKEN}}" ${{ secrets.ZEROHUB_URL }}/api/flist/me/docker -F 'image=${{ secrets.DOCKERHUB_USERNAME }}/tf-hub:${{ github.event.release.name }}'                                                                                                                                                                       
+            curl -f -X POST  -H "Authorization: bearer ${{secrets.ZEROHUB_TOKEN}}" ${{ secrets.ZEROHUB_URL }}/api/flist/me/docker -F 'image=${{ secrets.DOCKERHUB_USERNAME }}/tf-hub:latest'                                                                                                                                                                       
