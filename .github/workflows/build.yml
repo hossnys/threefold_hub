@@ -1,11 +1,13 @@
 name: Build docker image
 
 on:
+  release:
+    types: [published]
   workflow_dispatch:
-#  push:
-#   branches: [ development ]
+
   
 jobs:
+
     build-docker:
         runs-on: ubuntu-latest
         steps:
