@@ -21,5 +21,5 @@ jobs:
             build_args: BRANCH=development,TRC=false
         - name: Convert Docker image to flist
           run: |
-            #TOKEN=$(curl -f -H "Authorization: bearer ${{secrets.ZEROHUB_TOKEN}}" https://itsyou.online/v1/oauth/jwt/refresh)
+            # TOKEN=$(curl -f -H "Authorization: bearer ${{secrets.ZEROHUB_TOKEN}}" https://itsyou.online/v1/oauth/jwt/refresh)
             curl -f -X POST  -H "Authorization: bearer ${{secrets.ZEROHUB_TOKEN}}" ${{ secrets.ZEROHUB_URL }}/api/flist/me/docker -F 'image=${{ secrets.DOCKERHUB_USERNAME }}/tf-hub:${{ github.event.release.name }}'                                                                                                                                                                       
