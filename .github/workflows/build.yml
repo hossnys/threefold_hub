@@ -17,7 +17,7 @@ jobs:
             username: ${{ secrets.DOCKERHUB_USERNAME }}
             password: ${{ secrets.DOCKERHUB_PASSWORD }}
             dockerfile: docker/validator/Dockerfile
-            tags: ${{ github.event.release.name }}
+            tags: ${ github.event.release.name }
             build_args: BRANCH=development,TRC=false
         - name: Convert Docker image to flist
           run: |
