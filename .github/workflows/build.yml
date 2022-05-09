@@ -12,7 +12,7 @@ jobs:
         - uses: actions/checkout@v2
         - uses: docker/build-push-action@v1
           with:
-            path: jumpscale/install
+            path: docker/validator
             repository: ${{ secrets.DOCKERHUB_USERNAME }}/tf-hub
             username: ${{ secrets.DOCKERHUB_USERNAME }}
             password: ${{ secrets.DOCKERHUB_PASSWORD }}
